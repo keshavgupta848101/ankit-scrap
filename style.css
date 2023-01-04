@@ -1,0 +1,125 @@
+:root{
+    --primary-button:#6b91fc;
+    --heading-color:#4a5568;
+    --color:#2d3748;
+    --button-text:#fff;
+}
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background: color #7e8082;
+    background-image: url('bg.png');
+}
+
+
+.button{
+ background-color:var(--primary-button) ;
+ padding: .5rem 2rem;
+ outline: none;
+ border: none;
+ border-radius: .3rem;
+ color: var(--button-text);
+}
+.button:hover{
+    background-color: var(--primary-button);
+    color: var(--button-text);
+
+}
+
+.hero-text h1{
+    padding: 0;
+    margin-top: 2rem;
+    line-height: 3rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--heading-color);
+}
+.hero-text p{
+    color: var(--color);
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: .5px;
+    line-height: 26px;
+    margin-bottom: 30px;
+    
+}
+
+.data-cal{
+    background-color: white;
+    border-radius: .7rem;
+    text-align: center;
+    box-shadow: 0 2px 54px rgb(0 0 0 / 12%);
+    padding: 20px;
+    width: 70%;
+    height: 350px;
+}
+.data-cal h3{
+    margin-bottom: 20px;
+    color: var(--heading-color);
+    font-weight: 500;
+}
+
+
+.select-carat{
+    background-color:var(--primary-button) ;
+    color: var(--button-text);
+    padding: .3rem 1.6rem;
+    border-radius: .5rem;
+    border: none;
+}
+.select-carat:hover{
+    background-color: var(--button-text);
+    color: var(--primary-button);
+    border: 2px solid var(--primary-button);
+}
+
+
+.show-price{
+    padding: 2.5rem 1.5rem;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+#calculated_price{
+    padding: 2rem;
+    margin-top: .5rem;
+    font: size 3rem;
+    font-weight: 600;
+    color: val(--heading-color);
+}
+
+.show-price >div{
+    background-color: white;
+    display: flex;
+    text-transform: capitalize;
+    flex-direction: column;
+    border: 1px solid  var(--primary-button);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, .3);
+    border-radius: .5rem;
+    padding: 1rem;
+    min-width:150px;
+    height: 180px;
+}
+
+#city{
+  margin-top:.5rem;
+  font-size: 1.3rem;
+}
+#price{
+    margin-top:.5rem;
+    
+}
+.table{
+    overflow-x: auto;
+}
+
+
+@media (width<500px) {
+    .data-cal{
+        width: 100%;
+    }
+}
+
+::-webkit-scrollbar{
+    display: none;
+}

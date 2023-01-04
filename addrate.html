@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add data</title>
+    <style>
+        .container{
+            background-color: antiquewhite;
+            text-align: center;
+            border: 2px solid gray;
+            padding: 10px;
+            margin-top: 3rem;
+        }
+        #addData{
+            padding: .5rem 1.3rem;
+            color: white;
+            font-size: 1rem;
+            background-color: green;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            border-radius: .4rem;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <form>
+            
+            <div class="input-field">
+                <p>Delhi</p>
+                <input type="text" id="delhi-price">
+            </div>
+            
+            <div class="input-field">
+                <p>Mumbai</p>
+                <input type="text"  id="mumbai-price"> 
+            </div>
+
+            <div class="input-field">
+                <p>Lucknow</p>
+                <input type="text" id="lucknow-price">
+            </div>
+
+            <div class="input-field">
+                <p>Chennai</p>
+                <input type="text"  id="chennai-price">
+            </div>
+
+
+            <div class="input-field">
+             <p>Kolkata</p>
+            <input type="text"  id="kolkata-price"> 
+            </div>
+            
+
+            <div class="input-field">
+               <p>Hyderabad</p>
+               <input type="text"  id="hyderabad-price">
+            </div>
+
+            <div class="input-field">
+                <p>Jaipur</p>
+                <input type="text"  id="jaipur-price">
+            </div>
+
+            <div class="input-field">
+                <p>Bhushneswar</p>
+                <input type="text"  id="bhushneswar-price">
+                </div>
+            
+                <div class="input-field">
+                    <p>Banglore</p>
+                    <input type="text"  id="banglore-price">
+                </div>
+
+                <div class="input-field">
+                    <p>Patna</p>
+                    <input type="text"  id="patna-price">
+                </div>
+                      
+
+                       
+            
+            
+            <p>Date</p>
+            <input id="date" type="date">
+            <br>
+            <br>
+            <button id="addData" type="submit">Save </button>
+            
+        </form>
+    </div>
+        
+        <script type="module">
+    import {initializeApp }from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js';
+    import {getDatabase,ref,set}from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js';
+    const firebaseConfig = {
+  apiKey: "AIzaSyA46vSOs_fuwXsrTurx4JZJ4mETGAltgaQ",
+  authDomain: "blassy-a257d.firebaseapp.com",
+  databaseURL: "https://blassy-a257d-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "blassy-a257d",
+  storageBucket: "blassy-a257d.appspot.com",
+  messagingSenderId: "1039701529589",
+  appId: "1:1039701529589:web:021fae342056c7198b06bc"
+};
+const app=initializeApp (firebaseConfig);
+const db=getDatabase(app);
+
+const add=document.getElementById('addData');
+
+const delhi = document.querySelector('#delhi-price');
+const mumbai = document.querySelector('#mumbai-price');
+const lucknow = document.querySelector('#lucknow-price');
+const chennai = document.querySelector('#chennai-price');
+const kolkata = document.querySelector('#kolkata-price');
+const hyderabad = document.querySelector('#hyderabad-price');
+const jaipur=document.querySelector('#jaipur-price');
+const bhushneswar=document.querySelector('#bhushneswar-price');
+const banglore=document.querySelector('#banglore-price');
+const patna=document.querySelector('#patna-price');
+const d=document.getElementById('date');
+add.addEventListener('click',(e)=>{
+    e.preventDefault();
+
+    // let today = new Date();
+    // const dd = String(today.getDate()).padStart(2, '0');
+    // const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    // const yyyy = today.getFullYear();
+    // today = dd + '/' + mm + '/' + yyyy;
+
+    let data=  new Object ({
+    date:date.value,
+    cities:[
+            {city:"delhi",price:delhi.value},
+            {city:"mumbai",price:mumbai.value},
+            {city:"Lucknow",price:lucknow.value},
+            {city:"Chennai",price:chennai.value},
+            {city:"kolkata",price:kolkata.value},
+            {city:"hyderabad",price:hyderabad.value},
+            {city:"jaipur",price:jaipur.value},
+            {city:"bhushneswar",price:bhushneswar.value},
+            {city:"banglore",price:banglore.value},
+            {city:"patna",price:patna.value},
+           ]
+        })
+    
+       
+        try {
+            add.disabled=true;
+            add.innerText='saving...'
+           set(ref(db,'goldprice/'+ Date.now()),data);
+
+           console.log('saved success');
+        } catch (e) {
+           
+            console.error("Error adding document: ", e);
+            add.innerText='Save';
+          }
+
+      add.innerText='Save';
+      add.disabled=false;
+})
+</script>
+</body>
+</html>
